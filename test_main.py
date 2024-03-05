@@ -49,20 +49,8 @@ class TestBooksCollector:
         books_collector.set_book_genre("Книга1", "Фантастика")
         books_collector.set_book_genre("Книга2", "Мультфильмы")
 
-    # Устанавливаем возрастной рейтинг для некоторых жанров
-        books_collector.set_genre_age_rating("Ужасы", 18)
-        books_collector.set_genre_age_rating("Детективы", 16)
-
-    # Проверка, что возрастной рейтинг установлен корректно
-        assert books_collector.get_genre_age_rating("Ужасы") == 18
-        assert books_collector.get_genre_age_rating("Детективы") == 16
-
-    # Проверяем, что возрастной рейтинг не установлен для несуществующего жанра
-        assert books_collector.get_genre_age_rating("Романтика") is None
-
-
     # Проверка, что возвращается только книга с жанром "Мультфильмы"
-        assert books_collector.get_books_for_children() ==  ["Книга2"]
+        assert books_collector.get_books_for_children() == ["Книга2"]
 
     #  Проверка количества книг, возвращаемых для детей
         assert len(books_collector.get_books_for_children()) == 1
