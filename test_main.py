@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8  -*-
+# -*- coding: utf-8    -*-
 import pytest
 from main import BooksCollector
 
@@ -37,6 +37,7 @@ class TestBooksCollector:
         books_collector.delete_book_from_favorites("Сказка о царе Салтане")
         assert "Сказка о царе Салтане" not in books_collector.get_list_of_favorites_books()
 
+
     def test_get_books_for_children(self):
     # Создаем экземпляр коллекции книг
         books_collector = BooksCollector()
@@ -46,12 +47,9 @@ class TestBooksCollector:
         books_collector.add_new_book("Книга2")
 
     # Устанавливаем жанры для книг на русском языке
-        books_collector.set_book_genre("Книга1", "Фантастика")
-        books_collector.set_book_genre("Книга2", "Мультфильмы")
+        books_collector.set_book_genre("Книга1", "Фэнтези")
+        books_collector.set_book_genre("Книга2", "Детское")
 
-    # Проверка, что возвращается только книга с жанром "Мультфильмы"
-        assert books_collector.get_books_for_children() == ["Книга2"]
-
-    #  Проверка количества книг, возвращаемых для детей
-        assert len(books_collector.get_books_for_children()) == 1
-
+    # Проверяем, что возвращается только книга с жанром "Детское"
+        expected_result = ["Книга2"]
+        assert books_collector.get_books_for_children() == expected_result
